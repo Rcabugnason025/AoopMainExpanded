@@ -53,6 +53,7 @@ public abstract class Employee extends BaseEntity {
     public abstract double calculateDeductions();
     public abstract double calculateAllowances();
     public abstract boolean isEligibleForBenefits();
+    public abstract String getEmployeeType();
     
     // Template method pattern - defines algorithm structure (POLYMORPHISM)
     public final double calculateNetPay(int daysWorked, double overtimeHours) {
@@ -60,11 +61,6 @@ public abstract class Employee extends BaseEntity {
         double deductions = calculateDeductions();
         double allowances = calculateAllowances();
         return grossPay + allowances - deductions;
-    }
-    
-    // Polymorphic method - can be overridden
-    public String getEmployeeType() {
-        return "General Employee";
     }
     
     // Business logic methods

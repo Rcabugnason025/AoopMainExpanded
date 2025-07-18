@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-848c4d94a1f1ac5eb734d285842acd0cc80d4b3c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="motorph_payslip" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6995fc7f-718c-4c29-b2a6-57a8a8342976">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="COMPANY_LOGO" class="java.lang.String"/>
+	<parameter name="REPORT_TITLE" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["EMPLOYEE PAYSLIP"]]></defaultValueExpression>
+	</parameter>
+	<field name="employeeId" class="java.lang.Integer"/>
+	<field name="employeeName" class="java.lang.String"/>
+	<field name="position" class="java.lang.String"/>
+	<field name="department" class="java.lang.String"/>
+	<field name="payslipNo" class="java.lang.String"/>
+	<field name="periodStart" class="java.util.Date"/>
+	<field name="periodEnd" class="java.util.Date"/>
+	<field name="monthlyRate" class="java.math.BigDecimal"/>
+	<field name="dailyRate" class="java.math.BigDecimal"/>
+	<field name="daysWorked" class="java.lang.Integer"/>
+	<field name="riceSubsidy" class="java.math.BigDecimal"/>
+	<field name="phoneAllowance" class="java.math.BigDecimal"/>
+	<field name="clothingAllowance" class="java.math.BigDecimal"/>
+	<field name="totalBenefits" class="java.math.BigDecimal"/>
+	<field name="sss" class="java.math.BigDecimal"/>
+	<field name="philhealth" class="java.math.BigDecimal"/>
+	<field name="pagibig" class="java.math.BigDecimal"/>
+	<field name="tax" class="java.math.BigDecimal"/>
+	<field name="totalDeductions" class="java.math.BigDecimal"/>
+	<field name="grossPay" class="java.math.BigDecimal"/>
+	<field name="netPay" class="java.math.BigDecimal"/>
+	<variable name="grossIncome" class="java.math.BigDecimal">
+		<variableExpression><![CDATA[new BigDecimal($F{grossPay}.doubleValue()).subtract(new BigDecimal($F{totalBenefits}.doubleValue()))]]></variableExpression>
+	</variable>
+	<pageHeader>
+		<band height="225" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="10" width="402" height="30" uuid="2b169483-4460-4955-9087-132af0388540"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="24" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MotorPH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="45" width="402" height="15" uuid="d488ac42-3e5d-4502-a919-8546988d422c"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[7 Jupiter Avenue cor. F. Sandoval Jr., Bagong Nayon, Quezon City]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="60" width="402" height="15" uuid="510ba5af-6610-4610-8985-bb9942349e3b"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Phone: (028) 911-5071 / (028) 911-5072 / (028) 911-5073]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="75" width="402" height="15" uuid="0e73ef4d-7a22-4f48-ab69-9589c3a87f3a"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Email: corporate@motorph.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="110" width="572" height="25" uuid="f4b3ac19-7121-4bd7-ab20-aac32689dbc2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="18" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{REPORT_TITLE}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="150" width="279" height="75" backcolor="#F5F5F5" uuid="35df8f93-b853-4104-80f4-5421bbe8afd6">
+					<pen lineWidth="1.0"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="5" y="155" width="85" height="15" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="24ced27d-6659-4f6c-afc7-225447031667"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAYSLIP NO]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="100" y="155" width="170" height="15" uuid="f8f35a6c-7071-4fb3-9235-21df1de9817a"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payslipNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="5" y="180" width="85" height="15" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="4540b20e-b2f9-4fab-b76e-e099c5de504a"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLOYEE ID]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="100" y="180" width="170" height="15" uuid="0f3d7ab6-2036-4d8f-b8a2-417cd706f37b"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employeeId}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement mode="Opaque" x="279" y="150" width="279" height="75" backcolor="#F5F5F5" uuid="cbe9ba20-4a0b-4b83-a8b1-bab54dd184be">
+					<pen lineWidth="1.0"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="290" y="155" width="100" height="15" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="f153a9e5-5b61-4cb3-84cd-9c98afa5b224"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIOD START DATE]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement mode="Opaque" x="400" y="155" width="150" height="15" uuid="84b3b151-76c3-4068-8da4-e826f4ecadeb"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodStart}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="290" y="170" width="100" height="15" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="f4320f42-14cc-4f51-8635-eac74a87efb2"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PERIOD END DATE]]></text>
+			</staticText>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement mode="Opaque" x="400" y="170" width="150" height="15" uuid="05ddd595-0e45-4fec-a855-e9010029b31c"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{periodEnd}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="5" y="205" width="85" height="15" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="eb5b639d-f5c2-4876-b9e6-83ae14a15953"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLOYEE NAME]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="100" y="205" width="170" height="15" uuid="cddc3860-04f2-4144-9d16-0b3790712b35"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employeeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="400" y="185" width="150" height="34" uuid="9ec3c702-f9f7-4b7c-ad8a-46558a42f063"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{position} != null ? $F{position} : "N/A") + " / " + ($F{department} != null ? $F{department} : "General")]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="290" y="185" width="100" height="35" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="8652dcb7-5fa7-4894-921a-5d504783c678"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPLOYEE POSITION / DEPARTMENT]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="151" height="109" uuid="84dc3756-3729-4a45-90e1-9085843f7edf">
+					<property name="net.sf.jasperreports.image.when.no.data" value="Icon"/>
+				</reportElement>
+				<imageExpression><![CDATA[getClass().getResourceAsStream("/images/motorph_logo.png")]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="472" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="20" width="559" height="20" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="2f03d444-56e0-4de8-98b4-883e30280d9b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[EARNINGS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="40" width="559" height="100" uuid="c39b54a7-d1b5-4d85-a284-0e242bb1937d">
+					<pen lineWidth="1.0"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="45" width="397" height="15" uuid="37f83945-2153-4d99-8a35-e206b7cce368"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Monthly Rate]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement mode="Opaque" x="140" y="45" width="407" height="15" uuid="63213917-1d9b-4b38-b414-ec5672ead1ba"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{monthlyRate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="60" width="397" height="15" uuid="a3ae3868-0c4f-4784-ba20-ffcdbcf54d8e"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Daily Rate]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement mode="Opaque" x="140" y="60" width="407" height="15" uuid="755941ee-b5e2-4d19-9ed6-b1b390d35823"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dailyRate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="75" width="397" height="15" uuid="7317bb3a-827a-4ced-9fe3-0223488be75a"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Days Worked]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="140" y="75" width="407" height="15" uuid="ef0b8504-b27a-4d3f-a5aa-449010879e58"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{daysWorked}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="90" width="397" height="15" uuid="b8ce02a3-2023-4879-9e9d-85a6bc605999"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Overtime]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="140" y="90" width="407" height="15" uuid="466deb94-9e78-4e76-b315-99c5e4355c2e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="10" y="110" width="537" height="1" uuid="eefdd4bb-ff96-48b1-9aa2-c228a5275505"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="115" width="397" height="15" uuid="69d1ef34-7c38-4548-b084-403ed37d10f5"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GROSS INCOME]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement mode="Opaque" x="140" y="115" width="407" height="15" uuid="2bafed78-9344-47b1-a6fb-f8382ac6557e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grossIncome}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="150" width="559" height="20" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="dd659193-f6f0-425e-8431-43680230aae3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[BENEFITS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="170" width="559" height="100" uuid="e8462c99-a3a4-4bfe-8d89-8e09c54b810f">
+					<pen lineWidth="1.0"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="175" width="399" height="15" uuid="c16e974d-e1cc-4636-ba6f-fc0ca84b6f2a"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Rice Subsidy]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement mode="Opaque" x="140" y="175" width="409" height="15" uuid="4be27502-0d63-4859-a83a-0ad674cb0f40"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{riceSubsidy}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="190" width="399" height="15" uuid="0fb45f60-74e0-4482-bfc4-254f2e8d620a"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Phone Allowance]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement mode="Opaque" x="140" y="190" width="409" height="15" uuid="03ef215c-3136-4381-8b59-393c308986d6"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phoneAllowance}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="205" width="399" height="15" uuid="f4a998e9-aa29-46e6-95bc-bb6514b528bb"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Clothing Allowance]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="140" y="205" width="409" height="15" uuid="b414540b-0b37-428c-a5aa-b833ed7b02f0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clothingAllowance}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="225" width="539" height="1" uuid="cfb5cf79-c1a3-492c-813a-28af8d1d7fb8"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="230" width="399" height="15" uuid="066000b5-6dd2-4e81-a0d2-5c05f937595a"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement mode="Opaque" x="140" y="230" width="409" height="15" uuid="d7062f71-993e-4d83-96b1-501451b4afb7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalBenefits}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="-1" y="280" width="560" height="20" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="e22a65a4-0579-47c0-84e6-b3f87b2a17ca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DEDUCTIONS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="-1" y="300" width="560" height="100" uuid="2b196637-ac0f-403f-8a50-9a2d5614378a">
+					<pen lineWidth="1.0"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="9" y="305" width="430" height="15" uuid="8107b22e-c22b-4d0e-99c6-30471cc3b3a7"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Social Security System]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="169" y="305" width="380" height="15" uuid="5b8fc622-e234-49fb-9df8-7f402ed716e0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sss}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="320" width="430" height="15" uuid="4d27f385-6e17-474e-aaae-886b71e745c5"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Philhealth]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="169" y="320" width="380" height="15" uuid="adc97002-d17e-44b5-a470-75be872be9e0"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{philhealth}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="335" width="430" height="15" uuid="d88399d2-c33f-437f-8619-1b215cbffc38"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Pag-Ibig]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="169" y="335" width="380" height="15" uuid="03f19507-3c1b-4cd1-9dff-26cb4b8b2521"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pagibig}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="350" width="430" height="15" uuid="a6cb9ee8-7bba-4af2-a3f3-4633491a949d"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Withholding Tax]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="169" y="350" width="380" height="15" uuid="4a930ebd-437e-4d6a-92e9-26040655b8be"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tax}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="9" y="370" width="540" height="1" uuid="f340c2f2-23b5-49cc-b98a-8a4968821e71"/>
+			</line>
+			<staticText>
+				<reportElement x="9" y="375" width="430" height="15" uuid="3ab01a58-2dcc-4184-874e-80245f35e2c9"/>
+				<textElement>
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL DEDUCTIONS]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="169" y="375" width="380" height="15" uuid="bc00fcf1-aa3d-48ac-9035-46335b6ff292"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalDeductions}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="140" splitType="Stretch">
+			<line>
+				<reportElement x="-9" y="65" width="572" height="1" uuid="5d6dc933-29d4-4382-8780-ee8b958b6007"/>
+			</line>
+			<staticText>
+				<reportElement x="-9" y="75" width="572" height="15" uuid="4486ddbb-3949-4e42-9748-af66e7ae9694"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[This payslip is computer-generated and does not require signature.]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy 'at' HH:mm:ss">
+				<reportElement x="-9" y="90" width="572" height="15" uuid="85f952d3-9337-4f7a-93fd-8245313ea60e"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="8" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="10" width="559" height="20" forecolor="#FFFFFF" backcolor="#2F3B4F" uuid="689e5039-3a75-461a-8b76-02d53a466993"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[SUMMARY]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="30" width="559" height="88" uuid="38bfa023-71f8-48d1-90c0-fc2334834287">
+					<pen lineWidth="1.0"/>
+				</reportElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="35" width="399" height="15" uuid="39035983-0c6f-4edd-86b7-9df382220a10"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Gross Income]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="399" height="15" uuid="189366bc-dcbb-4c04-92a5-120bfc620577"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Benefits]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="65" width="399" height="15" uuid="6d87f846-8c3c-4205-8666-dc2ad64b871d"/>
+				<textElement>
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<text><![CDATA[Deductions]]></text>
+			</staticText>
+			<line>
+				<reportElement x="10" y="85" width="539" height="1" uuid="bf9d3dfa-e0c7-4eea-9892-e00e552700b2"/>
+			</line>
+			<staticText>
+				<reportElement x="10" y="90" width="399" height="20" uuid="8c8a8039-b802-4c4d-912d-20d7747247eb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TAKE HOME PAY]]></text>
+			</staticText>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="143" y="35" width="409" height="15" uuid="96c6a222-fdae-4156-b63c-262c396288e3"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{grossIncome}]]></textFieldExpression>
+			</textField>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="143" y="50" width="409" height="15" uuid="721e1333-6530-4696-abfa-6630ddc3026e"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalBenefits}]]></textFieldExpression>
+			</textField>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="143" y="65" width="409" height="15" uuid="b1ddc4fc-5c25-47b0-92e1-e14b064d4460"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalDeductions}]]></textFieldExpression>
+			</textField>
+			<textField pattern="₱#,##0.00">
+				<reportElement x="143" y="90" width="409" height="20" uuid="19447afd-6ddf-406b-924b-85b0ef551085"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{netPay}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
